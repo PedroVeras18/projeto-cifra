@@ -1,9 +1,9 @@
-import { View, Text } from "react-native";
+import { Stack, Text } from "tamagui"
 
 export function Home() {
-    return(
-        <View>
-            <Text>Home</Text>
-        </View>
+    return (
+        <Stack bg='$bg' flex={1} justifyContent="center" alignItems="center">
+            <Text>Tela Home</Text>
+        </Stack>
     )
 }

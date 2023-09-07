@@ -1,9 +1,10 @@
-import { ActivityIndicator, View } from "react-native";
+import { Stack } from "tamagui";
+import { Spinner } from "phosphor-react-native";
 
 export function Loading() {
-    return(
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#222' }}>
-            <ActivityIndicator color='#FFF' />
-        </View>
+    return (
+        <Stack flex={1} bg='bg' justifyContent='center' alignItems='center'>
+            <Spinner size={30} color="green" />
+        </Stack>
     )
 }
