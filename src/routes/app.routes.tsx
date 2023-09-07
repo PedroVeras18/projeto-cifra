@@ -29,7 +29,14 @@ export function AppRoutes() {
                 tabBarActiveTintColor: '#000',
                 tabBarInactiveTintColor: '#FFF',
                 tabBarStyle: {
-                    backgroundColor: '#FFF',
+                    shadowOffset: {
+                        width: 0,
+                        height: 12,
+                    },
+                    shadowOpacity: 0.58,
+                    shadowRadius: 16.0,
+                    elevation: 24,
+                    backgroundColor: '#F4F5F6',
                     borderTopWidth: 0,
                     height: Platform.OS === "android" ? 'auto' : 96,
                 }

@@ -1,9 +1,9 @@
-import { View, Text } from "react-native";
+import { Stack, Text } from "tamagui";
 
 export function EditMarket() {
     return (
-        <View>
-            <Text>Edit Market</Text>
-        </View>
+        <Stack bg='$bg' flex={1} justifyContent="center" alignItems="center">
+            <Text>Editar Mercado</Text>
+        </Stack>
     )
 }
