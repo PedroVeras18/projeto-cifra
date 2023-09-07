@@ -7,9 +7,7 @@ import { BestPrices } from '@screens/BestPrices';
 import { ProductDetail } from '@screens/ProductDetail';
 import { EditMarket } from '@screens/EditMarket';
 
-import IconHome from '@assets/homeIcon.png'
-import IconBestPrices from '@assets/bestPrices.png'
-import IconEditMarket from '@assets/editMarket.png'
+import { CurrencyCircleDollar, House, Pencil } from 'phosphor-react-native';
 
 type AppRoutes = {
     home: undefined;
@@ -41,7 +39,7 @@ export function AppRoutes() {
                     component={Home}
                     options={{
                         tabBarIcon: ({ focused }) => (
-                            <Image style={{ width: focused ? 38 : 27, height: focused ? 38 : 27 }} source={IconHome} />
+                            <House size={focused ? 34 : 28} weight="bold" color={focused ? '#1EB211' : '#000'} />
                         )
                     }}
                 />
@@ -54,8 +52,8 @@ export function AppRoutes() {
                     name="bestPrices"
                     component={BestPrices}
                     options={{
-                        tabBarIcon: ({ focused, }) => (
-                            <Image style={{ width: focused ? 36 : 23, height: focused ? 36 : 23 }} source={IconBestPrices} />
+                        tabBarIcon: ({ focused }) => (
+                            <CurrencyCircleDollar size={focused ? 35 : 28} weight="bold" color={focused ? '#1EB211' : '#000'} />
                         )
                     }}
                 />
@@ -63,8 +61,8 @@ export function AppRoutes() {
                     name="editMarket"
                     component={EditMarket}
                     options={{
-                        tabBarIcon: ({ focused, }) => (
-                            <Image style={{ width: focused ? 34 : 23, height: focused ? 34 : 23 }} source={IconEditMarket} />
+                        tabBarIcon: ({ focused }) => (
+                            <Pencil size={focused ? 36 : 28} color={focused ? '#1EB211' : '#000'} />
                         )
                     }}
                 />
