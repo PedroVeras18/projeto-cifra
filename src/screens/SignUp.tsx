@@ -1,13 +1,32 @@
-import { useNavigation } from "@react-navigation/native";
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+import { useState } from "react";
 import { Button, Input, Stack, Text, YStack } from "tamagui";
+import { useNavigation } from "@react-navigation/native";
+
+import { useAuthService } from "@store/useAuth";
+import { LoginFormProps } from "@interfaces/auth";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export function SignUp() {
-    const navigation = useNavigation<AuthNavigatorRoutesProps>();
+    const { authenticate } = useAuthService();
+
+    const [formData, setFormData] = useState<LoginFormProps>({
+        username: '',
+        email: '',
+        password: '',
+    });
+
+    const handleInputChange = (field: any, value: any) => {
+        setFormData({
+            ...formData,
+            [field]: value,
+        });
+    };
 
     function handleSignUp() {
-        console.log("Cadastrou")
+        authenticate(formData)
     }
+
+    const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
     return (
         <Stack flex={1} justifyContent='center' alignItems='center'>
@@ -17,15 +36,30 @@ export function SignUp() {
             <YStack w='100%' px={20} mt={60}>
                 <YStack>
                     <Text mb={5}>Digite o seu nome: </Text>
-                    <Input h={50} mb={20} placeholder="Nome: " />
+                    <Input
+                        h={50} mb={20}
+                        placeholder="Nome: "
+                        value={formData.username}
+                        onChangeText={(text) => handleInputChange('username', text)}
+                    />
                 </YStack>
                 <YStack>
                     <Text mb={5}>Digite o seu email: </Text>
-                    <Input h={50} mb={20} placeholder="Email: " />
+                    <Input
+                        h={50} mb={20}
+                        placeholder="Email: "
+                        value={formData.email}
+                        onChangeText={(text) => handleInputChange('email', text)}
+                    />
                 </YStack>
                 <YStack>
                     <Text mb={5}>Digite a sua senha: </Text>
-                    <Input h={50} secureTextEntry placeholder="Senha: " />
+                    <Input h={50}
+                        secureTextEntry
+                        placeholder="Senha: "
+                        value={formData.password}
+                        onChangeText={(text) => handleInputChange('password', text)}
+                    />
                 </YStack>
                 <Button mt={20} bg='green' onPress={handleSignUp}>
                     <Text color='white' fontWeight='bold'>CADASTRAR</Text>

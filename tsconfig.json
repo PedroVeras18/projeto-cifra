@@ -30,6 +30,12 @@
       ],
       "@theme/*": [
         "./src/theme/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ],
+      "@interfaces/*": [
+        "./src/interfaces/*"
       ]
     }
   }
