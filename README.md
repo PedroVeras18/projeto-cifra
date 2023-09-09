@@ -17,6 +17,18 @@ Este projeto é um aplicativo para auxiliar na busca pelos melhores preços de p
 
 **Back-end:** Django Rest Framework - Python
 
+## Instalação
+
+No terminal:
+
+```bash
+git clone https://github.com/PedroVeras18/projeto-cifra.git
+```
+No arquivo do projeto
+```bash
+npm install
+npx expo start
+```
 
 ## Contribuindo
 
