@@ -1,9 +1,13 @@
-import { Stack, Text } from "tamagui";
+import { ListBestPrice } from "@components/ListBestPrice";
+import { Stack, Text, YStack } from "tamagui";
 
 export function BestPrices() {
     return(
-        <Stack bg='$bg' flex={1} justifyContent="center" alignItems="center">
-            <Text>Melhores Preços</Text>
-        </Stack>
+        <YStack bg='3F4F5F6' flex={1} mt={100} alignItems="center">
+            <Text color='#000' fontSize={20} mb={20}>Melhores Preços</Text>
+            <ListBestPrice title="Cervejas Geladas" />
+            <ListBestPrice title="Destilados" />
+            <ListBestPrice title="Vinhps" />
+        </YStack>
     )
 }
