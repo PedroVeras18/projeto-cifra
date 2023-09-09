@@ -13,7 +13,6 @@ export const useAuthService = create<AuthServiceProps>(
 
         authenticate: async (data: LoginFormProps) => {
             // Fazer chamada na api e atribuir o retorno ao userAuth.
-
             set(() => ({ userAuth: data }))
         },
 
