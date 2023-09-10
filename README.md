@@ -4,6 +4,8 @@ Cifra é um sistema que está sendo desenvolvido para ser um comparador de preç
 
 Este projeto é um aplicativo para auxiliar na busca pelos melhores preços de produtos em supermercados.
 
+# Link Figma
+https://www.figma.com/file/be2r7aKLJHzx9h1Hy1ZwbK/Project-Cifra?type=design&node-id=0-1&mode=design&t=9TT0uvIcl3mNpbVx-0
 
 ## Funcionalidades
 - Cadastro de Donos de Mercados.
