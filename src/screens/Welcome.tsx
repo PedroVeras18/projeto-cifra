@@ -15,7 +15,7 @@ export function Welcome() {
             <Button
                 mt={100}
                 title="Acessar minha conta"
-                onPress={() => navigation.navigate('signUp')}
+                onPress={() => navigation.navigate('signIn')}
             />
             <Button
                 mt={20}

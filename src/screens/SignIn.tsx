@@ -1,6 +1,12 @@
+import { Stack, Text, YStack, XStack } from "tamagui";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-import { Button, Input, Stack, Text, YStack } from "tamagui";
+
+import { Input } from "@components/Input";
+import { Button } from "@components/Button";
+
+import { AppleLogo, ArrowCircleLeft, EnvelopeSimple, GoogleLogo, LockSimple } from "phosphor-react-native";
+import { CardAuthSocialMedia } from "@components/CardAuthSocialMedia";
 
 export function SignIn() {
     const navigation = useNavigation<AuthNavigatorRoutesProps>();
@@ -10,27 +16,57 @@ export function SignIn() {
     }
 
     return (
-        <Stack flex={1} justifyContent='center' alignItems='center'>
-            <Text color='green' fontWeight='bold' fontSize={30}>Cifra</Text>
-            <Text color='black' fontSize={20}>O seu comparador de preços.</Text>
+        <Stack flex={1} mt={50}>
+            <XStack w='50%' justifyContent="space-between" h={60} alignItems="flex-end">
+                <Stack onPress={() => navigation.goBack()}>
+                    <ArrowCircleLeft size={35} weight="bold" style={{ marginLeft: 20 }} />
+                </Stack>
+                <Text color='#000' fontWeight='bold' fontSize={20}>LOGIN</Text>
+            </XStack>
 
-            <YStack w='100%' px={20} mt={60}>
+            <YStack w='100%' px={20} mt={60} bg='#DCDCDC' flex={1} borderTopLeftRadius={35} borderTopRightRadius={35}>
                 <YStack>
-                    <Text mb={5}>Digite o seu email: </Text>
-                    <Input h={50} mb={20} placeholder="Email: " />
+                    <YStack my={25}>
+                        <Text fontWeight='bold' fontSize={30} color='#000000'>Acesse sua conta</Text>
+                        <Text color='#696969' fontSize={18}>Escolha como deseja continuar</Text>
+                    </YStack>
+                    <YStack>
+                        <Input
+                            placeholder="Seu email"
+                            icon={<EnvelopeSimple color='#747474' size={28} weight="regular" />}
+                        />
+                    </YStack>
+                    <YStack>
+                        <Input
+                            placeholder="Sua senha"
+                            icon={<LockSimple color='#747474' size={28} weight="regular" />}
+                        />
+                    </YStack>
+                    <Button
+                        width='100%'
+                        title="Continuar"
+                    />
                 </YStack>
+
+                <XStack justifyContent="center" alignItems="center" my={30}>
+                    <Stack w={170} h={3} bg='#FFF'></Stack>
+                    <Text mx={10}>Ou</Text>
+                    <Stack w={170} h={3} bg='#FFF'></Stack>
+                </XStack>
+
                 <YStack>
-                    <Text mb={5}>Digite a sua senha: </Text>
-                    <Input h={50} secureTextEntry placeholder="Senha: " />
+                    <CardAuthSocialMedia
+                        text="Continuar com Google"
+                        icon={<GoogleLogo size={28} weight="bold" />}
+                    />
+                    <CardAuthSocialMedia
+                        text="Continuar com Apple"
+                        icon={<AppleLogo size={28} weight="bold" />}
+                    />
                 </YStack>
-                <Button mt={20} bg='green' onPress={handleSignIn}>
-                    <Text color='white' fontWeight='bold'>ENTRAR</Text>
-                </Button>
+
+                <Text textAlign="center" mt={20}>Termos de serviço. Política de Privacidade.</Text>
             </YStack>
-
-            <Text onPress={() => navigation.navigate('signUp')} mt={20} fontWeight='bold' fontSize={15}>
-                Ainda não tem uma conta ? Cadastre-se
-            </Text>
         </Stack>
     )
 }
