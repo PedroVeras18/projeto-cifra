@@ -1,13 +1,16 @@
-import { Stack, YStack, Text } from "tamagui";
+import { Stack, YStack, Text, Image } from "tamagui";
 
 type CardCategoriesProps = {
     title: string;
+    image: any;
 }
 
-export function CardCategories({ title }: CardCategoriesProps) {
+export function CardCategories({ title, image }: CardCategoriesProps) {
     return(
         <YStack mr={20} alignItems='center'>
-            <Stack w={70} h={70} bg='#D9D9D9' borderRadius={15}></Stack>
+            <Stack w={70} h={70} bg='#FFFFFF' borderRadius={15} justifyContent="center" alignItems="center">
+                <Image source={image} />
+            </Stack>
             <Text mt={10} color='#000'>{title}</Text>
         </YStack>
     )

@@ -4,6 +4,7 @@ import { Input, Stack, Text, YStack, XStack } from "tamagui"
 import { CardCategories } from '@components/CardCategories';
 import { CardRecommended } from '@components/CardRecommended';
 import { useAuthService } from '@store/useAuth';
+import { CATEGORYS_LIST } from '../constants/category';
 
 export function Home() {
     const { logout, userAuth } = useAuthService()
@@ -36,13 +37,14 @@ export function Home() {
 
             <Stack px={30} mt={20}>
                 <FlatList
-                    data={categories}
+                    data={CATEGORYS_LIST}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={item => item}
+                    keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                         <CardCategories
-                            title={item}
+                            title={item.name}
+                            image={item.image}
                         />
                     )}
                 />

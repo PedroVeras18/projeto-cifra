@@ -21,6 +21,7 @@ module.exports = function(api) {
             '@theme': './src/theme',
             '@store': './src/store',
             '@interfaces': './src/interfaces',
+            '@constants': './src/constants',
           }
         },
       ],
