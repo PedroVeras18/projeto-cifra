@@ -1,19 +1,35 @@
 import { Stack, Text, YStack, XStack } from "tamagui";
 import { useNavigation } from "@react-navigation/native";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 
 import { AppleLogo, ArrowCircleLeft, EnvelopeSimple, GoogleLogo, LockSimple } from "phosphor-react-native";
 import { CardAuthSocialMedia } from "@components/CardAuthSocialMedia";
+import { useEffect } from "react";
+import { useAuthService } from "@store/useAuth";
 
 export function SignIn() {
+    const { authenticate } = useAuthService()
     const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
     function handleSignIn() {
         console.log('logou')
     }
+
+    useEffect(() => {
+        const checkAuthData = async () => {
+          const storedAuthData = await AsyncStorage.getItem('userAuthData');
+          if (storedAuthData) {
+            const parsedAuthData = JSON.parse(storedAuthData);
+            authenticate(parsedAuthData);
+          }
+        };
+
+        checkAuthData();
+      }, []);
 
     return (
         <Stack flex={1} mt={50}>

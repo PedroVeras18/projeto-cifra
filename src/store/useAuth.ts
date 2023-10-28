@@ -1,10 +1,11 @@
 import { create } from 'zustand';
 import { LoginFormProps } from '@interfaces/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface AuthServiceProps {
     userAuth: LoginFormProps | null;
     authenticate: (data: LoginFormProps) => void;
-    logout: () => void;
+    logout: () => Promise<void>;
 }
 
 export const useAuthService = create<AuthServiceProps>(
@@ -12,11 +13,12 @@ export const useAuthService = create<AuthServiceProps>(
         userAuth: null,
 
         authenticate: async (data: LoginFormProps) => {
-            // Fazer chamada na api e atribuir o retorno ao userAuth.
+            await AsyncStorage.setItem('userAuthData', JSON.stringify(data));
             set(() => ({ userAuth: data }))
         },
 
-        logout: () => {
+        logout: async () => {
+            await AsyncStorage.removeItem('userAuthData');
             set(() => ({ userAuth: null }));
         }
     })
