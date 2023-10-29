@@ -1,8 +1,4 @@
-export type ICategory = {
-    id: string
-    name: string
-    image: string
-}
+import { ICategory } from '@interfaces/category'
 
 import ImgFrios from '@assets/category/frios.png'
 import ImgBebidas from '@assets/category/bebidas.png'
