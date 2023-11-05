@@ -1,17 +1,25 @@
-import { FileImage } from "phosphor-react-native";
-import { Stack, Text } from "tamagui";
+import { Stack, Text, Image } from "tamagui";
 
-type CardRecommended = {
-    title: string;
+interface ICardRecommended {
+    item: {
+        image: any
+        name: string
+        weight: string
+        price: string
+    }
 }
 
-export function CardRecommended({ title }: CardRecommended) {
-    return(
-        <Stack flex={0.5} bg='#D9D9D9' w={150} h={150} p={10} borderRadius={15} m={10} justifyContent="center" alignItems="center">
-            <FileImage size={32} weight="bold" />
-            <Text mt={5} color='#FFF'>{title}</Text>
-            <Text mt={5} color='#A3A3A3'>170g</Text>
-            <Text mt={5} color='#3A3A3A'>R$ XX,XX</Text>
+export function CardRecommended({ item }: ICardRecommended) {
+    return (
+        <Stack flex={0.5} bg='#FFF' w={150} h={170} p={10} borderRadius={15} m={10} justifyContent="center">
+            <Stack bg='#FFFFFF' justifyContent="center" alignItems="center">
+                <Image source={item.image} />
+            </Stack>
+            <Stack alignItems={"flex-start"} mt={2}>
+                <Text mt={5} color='#000'>{item.name}</Text>
+                <Text mt={5} color='#A3A3A3'>{item.weight}</Text>
+                <Text mt={5} color='#3A3A3A'>{item.price}</Text>
+            </Stack>
         </Stack>
     )
 }

@@ -5,12 +5,10 @@ import { CardCategories } from '@components/CardCategories';
 import { CardRecommended } from '@components/CardRecommended';
 import { useAuthService } from '@store/useAuth';
 import { CATEGORYS_LIST } from '../constants/category';
+import { HIGHLIGHTS_DAY } from '@constants/highlightsDay';
 
 export function Home() {
     const { logout, userAuth } = useAuthService()
-
-    const categories = ['Frios', 'Bebidas', 'Açougue', 'Hortifruti', 'Higiene e Limpeza', 'Sanduíches', 'Pizzaria', 'Sushi']
-    const productRecommended = ['Banana da Terra', 'Produto 1', 'Produto 2', 'Produto 3']
 
     return (
         <Stack bg='#F4F5F6' flex={1}>
@@ -54,13 +52,13 @@ export function Home() {
                 <Text fontSize={20} color='#000' mt={20}>Recomendados</Text>
                 <Stack mt={20}>
                     <FlatList
-                        data={productRecommended}
+                        data={HIGHLIGHTS_DAY}
                         numColumns={2}
                         horizontal={false}
-                        keyExtractor={item => item}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <CardRecommended
-                                title={item}
+                                item={item}
                             />
                         )}
                     />
