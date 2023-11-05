@@ -1,27 +1,27 @@
+import { CATEGORYS_LIST } from "@constants/category";
 import { FlatList } from "react-native";
-import { YStack, Text, Stack } from "tamagui";
+import { YStack, Text } from "tamagui";
+import { CardCategories } from "./CardCategories";
 
 export type ListBestPrice = {
     title: string;
 }
 
 export function ListBestPrice({ title }: ListBestPrice) {
-    const items = ['1', '2', '3', '4', '5']
-
     return (
         <YStack h={200} mx={30}>
-            <Text fontSize={15} color='#000'>{title}</Text>
+            <Text fontSize={15} color='#000' mb={5}>{title}</Text>
 
             <FlatList
-                data={items}
+                data={CATEGORYS_LIST}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                keyExtractor={item => item}
+                keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <Stack w={100} h={100} bg='#FFFFFF' m={10} borderRadius={15} justifyContent="center" alignItems="center">
-                        <Text>{item}</Text>
-                        <Text>R$ XX,XX</Text>
-                    </Stack>
+                    <CardCategories
+                        title={item.name}
+                        image={item.image}
+                    />
                 )}
             />
         </YStack>
